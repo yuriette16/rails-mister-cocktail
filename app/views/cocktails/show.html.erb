@@ -1,1 +1,33 @@
-<%= @cocktail.name  %>
+<div class="container">
+  <div class="row justify-content-center">
+    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 recipe-title-wrapper">
+      <div class="recipe-title">
+        <h2>Title</h2>
+        <p>REVIEWS</p>
+      </div>
+    </div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="recipe-img"><%= image_tag 'cocktail', width:400 %></div>
+  </div>
+
+  <div class="row justify-content-center">
+    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 recipe-content">
+      <div class="ingredients">
+        <h2>INGREDIENTS
+        <span><%= link_to '<i class="fas fa-edit"></i>'.html_safe, new_cocktail_dose_path(@cocktail) %></span></h2>
+      </div>
+
+      <ul>
+        <% @doses.each do |dose| %>
+          <li>
+            <%= dose.cocktail.name %>
+            <%= dose.ingredient.name %>
+            <%= dose.description %>
+          </li>
+        <% end %>
+      </ul>
+    </div>
+  </div>
+</div>

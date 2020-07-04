@@ -1,0 +1,28 @@
+// Place all the styles related to the cocktails controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: https://sass-lang.com/
+.recipe-content{
+  border: 1px solid $middle-gray;
+  padding: 2.75rem 2.1875rem 2rem;
+  margin: 16px 0;
+  z-index: 1;
+}
+
+.ingredients{
+  border-bottom: 4px solid $middle-gray;
+}
+
+.recipe-title-wrapper{
+  margin-top: 16px;
+  border: 2px solid $cocktail-main-pink;
+}
+
+.recipe-title{
+  position: relative;
+}
+
+.recipe-img{
+  background-position: center;
+  margin-top: -40px;
+  z-index: 2;
+}

@@ -1,9 +1,22 @@
-<% if @cocktails != nil %>
-  <ul>
-    <% @cocktails.each do |cocktail| %>
-      <li>
-      <%= link_to cocktail.name, cocktail_path(cocktail) %>
-      </li>
-    <% end %>
-  </ul>
-<% end %>
+<div class="main-banner">
+    <div class="cocktail-search">
+      <form>
+        <div class="form-group">
+          <input type="text" class="form-control" id="search-cocktail" aria-describedby="emailHelp" placeholder="Search">
+        </div>
+      </form>
+    </div>
+</div>
+
+<div class="container">
+    <h2>All Your Cocktail </h2>
+    <div class="cards">
+      <% if @cocktails != nil %>
+        <% @cocktails.each do |cocktail| %>
+          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail&<%= rand(10000) %>)">
+          <%= link_to cocktail.name, cocktail_path(cocktail) %>
+          </div>
+        <% end %>
+      <% end %>
+    </div>
+</div>
