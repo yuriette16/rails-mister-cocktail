@@ -1,5 +1,5 @@
 .main-banner{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(banner);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url(banner);
   background-size: cover;
   background-position: center;
   height: calc(100vh - 55px);
@@ -9,7 +9,7 @@
 }
 
 .create-cocktail-banner{
-  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(cocktail);
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url(cocktail);
   background-size: cover;
   background-position: center;
   height: calc(100vh - 55px);
