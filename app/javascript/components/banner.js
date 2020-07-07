@@ -2,8 +2,9 @@ import Typed from 'typed.js';
 
 const options = {
   strings: ['Tropical loko', 'Mojito', 'Gin fizz', 'Rum'],
+  attr: 'placeholder',
   typeSpeed: 60,
-  loopCount: Infinity,
+  loop: true,
 };
 
 const typed = new Typed('#search-cocktail', options);
@@ -17,4 +18,3 @@ const displayAllCocktails = () => {
 
 
 export { displayAllCocktails };
-

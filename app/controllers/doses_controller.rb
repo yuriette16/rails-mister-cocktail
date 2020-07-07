@@ -1,6 +1,6 @@
 class DosesController < ApplicationController
   # before_action :find_dose, only:[:new, :show]
-  before_action :find_cocktail, only:[:new, :create, :destroy, :show]
+  before_action :find_cocktail, only:[:new, :create, :show]
   before_action :find_dose, only:[:destroy]
 
   def index
@@ -26,7 +26,7 @@ class DosesController < ApplicationController
 
   def destroy
     @dose.destroy
-    redirect_to cocktail_path(params[:cocktail_id])
+    redirect_to cocktail_path(@dose.cocktail)
   end
 
   private
