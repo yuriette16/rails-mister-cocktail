@@ -9,7 +9,13 @@
   </div>
 
   <div class="row justify-content-center">
-    <div class="recipe-img"><%= image_tag 'cocktail', width:400 %></div>
+    <div class="recipe-img">
+      <% if @cocktail.cocktail_photo.attached? %>
+        <%= cl_image_tag @cocktail.cocktail_photo.key, width:400 %>
+      <% else %>
+        <%= image_tag 'cocktail', width:400 %>
+      <% end %>
+    </div>
   </div>
 
   <div class="row justify-content-center">
@@ -22,12 +28,14 @@
       <ul>
         <% @doses.each do |dose| %>
           <li>
-            <%= dose.cocktail.name %>
-            <%= dose.ingredient.name %>
-            <%= dose.description %>
+            <%= "#{dose.description} of #{dose.ingredient.name}" %>
+            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, cocktail_dose_path(@cocktail.id, dose),
+            method: :delete, data: { confirm: "Are you sure?" } %>
+            <hr>
           </li>
         <% end %>
       </ul>
     </div>
   </div>
 </div>
+

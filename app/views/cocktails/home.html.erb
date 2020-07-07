@@ -22,7 +22,11 @@
     <div class="cards">
       <% if @cocktails != nil %>
         <% @cocktails.each do |cocktail| %>
-          <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail&<%= rand(10000) %>)">
+          <% if cocktail.cocktail_photo.attached? %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), <%= cl_image_path cocktail.cocktail_photo.key %> ">
+          <% else %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail&<%= rand(10000) %>)">
+          <% end %>
             <div class="cocktail-title">
               <%= link_to cocktail.name, cocktail_path(cocktail) %>
             </div>

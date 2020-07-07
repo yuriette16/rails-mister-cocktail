@@ -10,6 +10,7 @@ gem 'simple_form'
 
 # Upload photos
 gem 'cloudinary', '~> 1.12.0'
+gem 'dotenv-rails', groups: [:development, :test]
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.3', '>= 6.0.3.2'

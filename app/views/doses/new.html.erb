@@ -1,9 +1,15 @@
-<h3>Edit recipe</h2>
-
-<h2>Ingredients</h2>
-
-<%= simple_form_for [@cocktail, @dose] do |c|%>
-  <%= c.association :ingredient %>
-  <%= c.input :description %>
-  <%= c.submit  %>
-<% end %>
+<div class="create-dose-banner">
+  <div class="container fill">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-lg-8 align-self-center">
+        <h3><%= @cocktail.name %></h2>
+        <span><h2>Ingredients</h2></span>
+        <%= simple_form_for [@cocktail, @dose] do |c|%>
+          <%= c.association :ingredient %>
+          <%= c.input :description %>
+          <%= c.submit  %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>
