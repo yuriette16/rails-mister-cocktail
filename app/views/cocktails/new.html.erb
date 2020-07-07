@@ -1,4 +1,12 @@
-<%= simple_form_for @cocktail do |c|%>
-  <%= c.input :name %>
-  <%= c.submit  %>
-<% end %>
+<div class="create-cocktail-banner">
+  <div class="container fill">
+    <div class="row justify-content-center">
+      <div class="col-sm-10 col-lg-8 align-self-center">
+        <%= simple_form_for @cocktail do |c|%>
+          <%= c.input :name%>
+          <%= c.submit %>
+        <% end %>
+      </div>
+    </div>
+  </div>
+</div>

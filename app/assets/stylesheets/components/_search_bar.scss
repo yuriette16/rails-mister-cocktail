@@ -2,18 +2,19 @@
   background-size: cover;
   background-position: center;
   position: absolute;
-  top: 30%;
-  left: 20%;
+  top: 24%;
+  left: 50%;
   transform: translateX(-50%);
 }
 
 #search-cocktail{
   border-radius: 50px;
-  opacity: 0.8px;
+  opacity: 0.8;
   background-color: rgba(255,255,255,0.1);
   box-shadow: inset 1px 1px 1px rgba(0,0,0,0.2);
+  color: white;
 }
 
 #search-cocktail:hover {
-  border-color: red;
+  border-color: $cocktail-main-pink;
 }

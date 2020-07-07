@@ -1,9 +1,18 @@
 .main-banner{
-
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(banner);
   background-size: cover;
   background-position: center;
-  height: 100vh;
+  height: calc(100vh - 55px);
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
+.create-cocktail-banner{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), url(cocktail);
+  background-size: cover;
+  background-position: center;
+  height: calc(100vh - 55px);
   width: 100%;
   object-fit: cover;
   position: relative;
