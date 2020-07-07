@@ -13,7 +13,7 @@
       <% if @cocktail.cocktail_photo.attached? %>
         <%= cl_image_tag @cocktail.cocktail_photo.key, width:400 %>
       <% else %>
-        <%= image_tag 'cocktail', width:400 %>
+        <%= image_tag 'cocktail.png', width:400 %>
       <% end %>
     </div>
   </div>
