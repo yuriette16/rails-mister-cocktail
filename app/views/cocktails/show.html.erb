@@ -1,41 +1,38 @@
-<div class="container">
-  <div class="row justify-content-center">
-    <div class="col-sm-10 col-md-10 col-lg-10 col-xl-10 recipe-title-wrapper">
+<div class="container d-flex flex-row align-items-center justify-content-center">
+    <div class="">
+      <div class="recipe-img">
+        <% if @cocktail.cocktail_photo.attached? %>
+          <%= cl_image_tag @cocktail.cocktail_photo.key, width:400 %>
+        <% else %>
+          <%= image_tag 'cocktail.png', width:400 %>
+        <% end %>
+      </div>
+    </div>
+
+    <div class="d flex-column">
       <div class="recipe-title">
         <h2><%= @cocktail.name %></h2>
         <p>REVIEWS</p>
       </div>
-    </div>
-  </div>
 
-  <div class="row justify-content-center">
-    <div class="recipe-img">
-      <% if @cocktail.cocktail_photo.attached? %>
-        <%= cl_image_tag @cocktail.cocktail_photo.key, width:400 %>
-      <% else %>
-        <%= image_tag 'cocktail.png', width:400 %>
-      <% end %>
-    </div>
-  </div>
+      <div class="recipe-content">
+        <div class="ingredients">
+          <h2>INGREDIENTS
+          <span><%= link_to '<i class="fas fa-edit"></i>'.html_safe, new_cocktail_dose_path(@cocktail) %></span></h2>
+        </div>
 
-  <div class="row justify-content-center">
-    <div class="col-sm-12 col-md-12 col-lg-6 col-xl-6 recipe-content">
-      <div class="ingredients">
-        <h2>INGREDIENTS
-        <span><%= link_to '<i class="fas fa-edit"></i>'.html_safe, new_cocktail_dose_path(@cocktail) %></span></h2>
+        <ul>
+          <% @doses.each do |dose| %>
+            <li>
+              <%= "#{dose.description} of #{dose.ingredient.name}" %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, dose_path(dose),
+              method: :delete, data: { confirm: "Are you sure?" } %>
+              <hr>
+            </li>
+          <% end %>
+        </ul>
       </div>
-
-      <ul>
-        <% @doses.each do |dose| %>
-          <li>
-            <%= "#{dose.description} of #{dose.ingredient.name}" %>
-            <%= link_to '<i class="fas fa-trash"></i>'.html_safe, dose_path(dose),
-            method: :delete, data: { confirm: "Are you sure?" } %>
-            <hr>
-          </li>
-        <% end %>
-      </ul>
     </div>
-  </div>
+
 </div>
 
