@@ -1,16 +1,14 @@
 <div class="main-banner">
   <div class="container">
-    <div class="row justify-content-center pt-10">
-      <h1>Explore your cocktails</h1>
+    <div class="row justify-content-center">
+      <h1 class="mt-5">Explore your cocktails</h1>
     </div>
 
-    <div class="row justify-content-center">
+    <div class="row justify-content-center pt-4">
       <div class="col-sm-10 col-lg-6">
-        <form>
-          <div class="form-group">
-            <input type="text" class="form-control" id="search-cocktail" placeholder="">
-          </div>
-        </form>
+        <%= form_tag cocktails_path, :method => 'get', :id => "search-form" do %>
+            <%= text_field_tag :search, params[:search], :id => "search-cocktail", :placeholder => "" %>
+        <% end %>
       </div>
     </div>
     <i input type="button" class="fas fa-arrow-circle-down arrow"></i>
@@ -18,10 +16,17 @@
 </div>
 
 <div class="container">
-    <h2>All Your Cocktail </h2>
+    <h2 class="mt-4 mb-4">All Your Cocktail</h2>
     <div class="cards">
       <% if @cocktails != nil %>
         <% @cocktails.each do |cocktail| %>
+          <% if cocktail.cocktail_photo.attached? %>
+            <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(<%= cl_image_path cocktail.cocktail_photo %>) ">
+              <div class="cocktail-title">
+                <%= link_to cocktail.name, cocktail_path(cocktail) %>
+              </div>
+            </div>
+          <% else %>
             <div class="card-category" style="background-image: linear-gradient(rgba(0,0,0,0.3), rgba(0,0,0,0.3)), url(https://source.unsplash.com/featured/?cocktail&<%= rand(10000) %>)">
               <div class="cocktail-title">
                 <%= link_to cocktail.name, cocktail_path(cocktail) %>
@@ -29,5 +34,7 @@
             </div>
         <% end %>
       <% end %>
+      <% end %>
     </div>
 </div>
+
