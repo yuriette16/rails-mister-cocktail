@@ -8,6 +8,16 @@
   position: relative;
 }
 
+.cocktail-banner{
+  background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url(banner);
+  background-size: cover;
+  background-position: center;
+  height: 200px;
+  width: 100%;
+  object-fit: cover;
+  position: relative;
+}
+
 .create-cocktail-banner{
   background-image: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.3)), asset-url(cocktail);
   background-size: cover;
@@ -16,4 +26,9 @@
   width: 100%;
   object-fit: cover;
   position: relative;
+}
+
+.recipe-title{
+  background-color: white;
+  width: 30%;
 }

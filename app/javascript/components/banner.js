@@ -1,13 +1,15 @@
 import Typed from 'typed.js';
 
-const options = {
-  strings: ['Tropical loko', 'Mojito', 'Gin fizz', 'Rum'],
-  attr: 'placeholder',
-  typeSpeed: 60,
-  loop: true,
-};
+const typed = () => {
+  const options = {
+    strings: ['Tropical loko', 'Mojito', 'Gin fizz', 'Rum'],
+    attr: 'placeholder',
+    typeSpeed: 60,
+    loop: true,
+  };
 
-const typed = new Typed('#search-cocktail', options);
+  const typed =  new Typed('#search-cocktail', options);
+};
 
 const displayAllCocktails = () => {
   const arrow = document.querySelector(".arrow");
@@ -17,4 +19,4 @@ const displayAllCocktails = () => {
 };
 
 
-export { displayAllCocktails };
+export { displayAllCocktails, typed };

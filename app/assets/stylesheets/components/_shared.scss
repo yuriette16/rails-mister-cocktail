@@ -9,5 +9,9 @@ a, a:hover {
 }
 
 body {
-    padding-top: 55px;
+  padding-top: 55px;
+}
+
+h1 h2 h3{
+  font-style: $headers-font;
 }

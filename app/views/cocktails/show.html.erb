@@ -1,38 +1,87 @@
-<div class="container d-flex flex-row align-items-center justify-content-center">
-    <div class="">
-      <div class="recipe-img">
-        <% if @cocktail.cocktail_photo.attached? %>
-          <%= cl_image_tag @cocktail.cocktail_photo.key, width:400 %>
+<div class="cocktail-banner">
+      <div class="container recipe-title d-flex flex-column justify-content-center align-items-center">
+        <h2><%= @cocktail.name %></h2>
+        <% if @num == 0 %>
+          <p>No reviews yet..</p>
         <% else %>
-          <%= image_tag 'cocktail.png', width:400 %>
+          <p><%= '⭐️' * @num %><%= "(#{@num})" %></p>
         <% end %>
       </div>
+</div>
+
+<div class="container mt-4">
+  <div class="row d-flex flex-row justify-content-center">
+    <div class="col-sm-12 col-md-8 col-lg-5 col-xl-5 recipe-img pr-4 mb-4">
+        <% if @cocktail.cocktail_photo.attached? %>
+          <%= cl_image_tag @cocktail.cocktail_photo.key, width:350 %>
+        <% else %>
+          <%= image_tag 'cocktail.png', width:350 %>
+        <% end %>
     </div>
 
-    <div class="d flex-column">
-      <div class="recipe-title">
-        <h2><%= @cocktail.name %></h2>
-        <p>REVIEWS</p>
-      </div>
-
-      <div class="recipe-content">
-        <div class="ingredients">
-          <h2>INGREDIENTS
-          <span><%= link_to '<i class="fas fa-edit"></i>'.html_safe, new_cocktail_dose_path(@cocktail) %></span></h2>
+    <div class="col ">
+      <div class="cocktail-content">
+        <div class="details">
+          <h3>INGREDIENTS
+          <span><%= link_to '<i class="fas fa-edit"></i>'.html_safe, new_cocktail_dose_path(@cocktail) %></span></h3>
         </div>
-
         <ul>
-          <% @doses.each do |dose| %>
-            <li>
-              <%= "#{dose.description} of #{dose.ingredient.name}" %>
-              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, dose_path(dose),
-              method: :delete, data: { confirm: "Are you sure?" } %>
+          <% if @doses.empty? %>
+            <%= "No ingredients yet.." %>
+          <% end %>
+          <% @cocktail.doses.each do |dose| %>
+            <li class="list">
+              <%= "✔️ #{dose.description} of #{dose.ingredient.name}" %>
+              <%= link_to '<i class="fas fa-trash"></i>'.html_safe, dose_path(dose), method: :delete,
+              data: { confirm: "Are you sure?" } %>
               <hr>
             </li>
           <% end %>
         </ul>
       </div>
     </div>
+  </div>
+    <div>
+      <div class="cocktail-content">
+        <div class="details">
+          <h3>REVIEWS
+          <button type="button" class="btn" data-toggle="modal" data-target="#exampleModal" id="review-button">
+            Add reviews
+          </button></h3>
+        </div>
+        <% if @rates.empty? %>
+          <%= "No reviews yet.." %>
+        <% end %>
+        <ul>
+          <% @rates.each do |rate| %>
+            <li>
+              <%= '⭐️' * rate.rate%><%= "(#{rate.rate}) " %><%= rate.description  %>
+              <hr>
+            </li>
+          <% end %>
+        </ul>
+      </div>
 
+      <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+        <div class="modal-dialog" role="document">
+          <div class="modal-content">
+            <div class="modal-header">
+              <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+              <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                <span aria-hidden="true">&times;</span>
+              </button>
+            </div>
+            <div class="modal-body">
+              <%= simple_form_for @rating, :url => "/cocktails/#{@cocktail.id}/ratings" do |r|%>
+                <%= r.input :rate %>
+                <%= r.input :description %>
+                <%= r.submit class: 'cocktail-button' %>
+              <% end %>
+            </div>
+          </div>
+        </div>
+      </div>
+
+    </div>
 </div>
 

@@ -3,6 +3,7 @@ class CocktailsController < ApplicationController
 
   def home
     @cocktails = Cocktail.all
+    @cocktails_average_rate = cocktails_average(@cocktails)
   end
 
   def index
@@ -15,7 +16,10 @@ class CocktailsController < ApplicationController
   end
 
   def show
+    @rates = @cocktail.ratings
+    @rating = Rating.new
     @doses = @cocktail.doses
+    @num = cal_average_rates(@rates)
   end
 
   def new
@@ -39,5 +43,28 @@ class CocktailsController < ApplicationController
 
   def cocktail_params
     params.require(:cocktail).permit(:name, :cocktail_photo)
+  end
+
+  def cal_average_rates(rates)
+    num = 0
+    if rates.empty?
+      return num
+    else
+      rates.each do |rate|
+        num = num.to_f + rate.rate.to_f
+      end
+      return num / rates.length
+    end
+  end
+
+  def cocktails_average(cocktails)
+    cocktails_array = []
+    cocktails.each do |cocktail|
+      cocktail_hash = {}
+      cocktail_hash[:id] = cocktail.id
+      cocktail_hash[:rate] = cal_average_rates(cocktail.ratings)
+      cocktails_array << cocktail_hash
+    end
+    return cocktails_array
   end
 end

@@ -8,12 +8,17 @@ require("@rails/activestorage").start()
 require("channels")
 import 'bootstrap';
 import { initUpdateNavbarOnScroll } from '../components/navbar';
-import { displayAllCocktails } from '../components/banner';
+import { displayAllCocktails, typed } from '../components/banner';
 
 document.addEventListener('turbolinks:load', () => {
   // Call your JS functions here
   initUpdateNavbarOnScroll();
-  displayAllCocktails();
+
+  const element = document.getElementById("search-cocktail");
+  if (element){
+    displayAllCocktails();
+    typed();
+  }
 });
 
 

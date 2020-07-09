@@ -1,0 +1,18 @@
+.add-cocktail-background{
+  background-color: rgba(0,0,0,0.6);
+  border-radius: 4px;
+  color: white;
+  padding: 8px 16px;
+}
+
+.create-cocktail-title{
+  text-align: justify
+}
+
+.cocktail-button{
+  background-color: $cocktail-main-pink;
+  opacity: 0.8;
+  border-radius: 4px;
+  padding: 4px 4px;
+  color: white;
+}
